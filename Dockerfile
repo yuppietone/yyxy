@@ -25,8 +25,7 @@ RUN apk update && \
     wget -qO- https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip | busybox unzip - && \
     chmod +x /xray && \
     rm -rf /var/cache/apk/* && \
-    apk del .build-deps
-
+   
 ENV XDG_CONFIG_HOME /etc/caddy
 ENV XDG_DATA_HOME /usr/share/caddy
 
