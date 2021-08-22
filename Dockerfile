@@ -27,6 +27,9 @@ RUN apk update && \
     rm -rf /var/cache/apk/* && \
     apk del .build-deps
 
+ENV XDG_CONFIG_HOME /etc/caddy
+ENV XDG_DATA_HOME /usr/share/caddy
+
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
 
