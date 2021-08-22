@@ -20,10 +20,13 @@ FROM caddy:builder-alpine
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 RUN apk update && \
-    apk add --no-cache ca-certificates caddy tor wget && \
-    wget -qO- https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip | busybox unzip - && \
+    apk add --no-cache --virtual ca-certificates caddy tor wget curl && \
+    mkdir /xray && \
+    curl -L -H "Cache-Control: no-cache" -o /xray/xray.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip && \
+    unzip /xray/xray.zip -d /xray && \
     chmod +x /xray && \
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* && \
+    apk del .build-deps
 
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
