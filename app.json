@@ -32,7 +32,6 @@
             "value": "https://raw.githubusercontent.com/YG-tsj/xrayku/master/etc/StoreFiles"
         }
     },
-    "website": "https://github.com/YG-tsj/xrayku",
-    "repository": "https://github.com/YG-tsj/xrayku",
+    "repository": "",
     "stack": "container"
 }
